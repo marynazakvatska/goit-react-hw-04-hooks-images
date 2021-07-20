@@ -23,14 +23,12 @@ export default function App() {
 
 
 useEffect(() =>{
-  /* if (prevState.isLoading !== true) {
-        setIsLoading( true );
-      }
- */
-  const toggle = () => {
-   setIsLoading === !setIsLoading
- }
-            
+
+  
+  if (!searchQuery ) {
+    return;
+  }
+       setIsLoading(true)     
       const API_KEY = "21675881-9f2314d809854342b3af65054";
       const BASE_URL = "https://pixabay.com/api";
 
@@ -46,7 +44,9 @@ useEffect(() =>{
         })
      
         .then(data => data.hits)
-        .then(arrayImage => setImages(prevImages => [...prevImages, ...arrayImage]))
+        .then(arrayImage => {
+          setImages(prevImages => [...prevImages, ...arrayImage]);
+        })
         .catch(error => error)
         .finally(() => {
           setIsLoading( false );
@@ -56,7 +56,7 @@ useEffect(() =>{
           });
         });
 
-}, [searchQuery, page, setIsLoading])
+}, [searchQuery, page])
     
 
 const  resetState = () => {

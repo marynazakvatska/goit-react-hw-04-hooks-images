@@ -42,3 +42,7 @@ export default function Modal({ onClose, image }) {
    
 }
 
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  image: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+};
